@@ -10,6 +10,18 @@ export class PaymentForm extends React.Component<PaymentFormProps,{}> {
     super (props);
   }
 
+  public cancelButton = () => {
+    console.log('cancelar');
+  }
+
+  public finishButton = () => {
+    console.log('finish');
+  }
+
+  public applyButton = () => {
+    console.log('apply');
+  }
+
   public render() {
     const { ...props } = this.props;
     return (
@@ -41,16 +53,16 @@ export class PaymentForm extends React.Component<PaymentFormProps,{}> {
                 <input type="text" className="form-control" id="promotionalCode" placeholder="Código promocional"/>
               </div>
               <div className="col-3 align-self-center">
-                <Button buttonType="form" label="APLICAR"/>
+                <Button buttonType="form" label="APLICAR" onClickButton={this.applyButton}/>
               </div>
             </div>
         </div>
         <div className="row justify-content-around mt-4">
           <div className="col-4">
-              <Button buttonType="form" label="Cancelar"/>
+              <Button buttonType="form" label="Cancelar" onClickButton={this.cancelButton}/>
           </div>
           <div className="col-4">
-              <Button buttonType="form" label="Finalizar"/>
+              <Button buttonType="form" label="Finalizar" onClickButton={this.finishButton}/>
           </div>
         </div>
       </form>

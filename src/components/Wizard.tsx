@@ -2,21 +2,28 @@ import React from 'react';
 import '../assets/scss/main.scss';
 import { WizardStep } from './WizardStep';
 
-interface WizardStepProps {
+//ToDo poner como Enum el status
+interface WizardProps {
+  steps: {
+    title: string,
+    status: 'complete' | 'active' | 'disabled';
+    id: string
+  }[]
 }
 
-export class Wizard extends React.Component<WizardStepProps,{}> {
-  constructor(props: WizardStepProps) {
+export class Wizard extends React.Component<WizardProps,{}> {
+  constructor(props: WizardProps) {
     super (props);
   }
 
   public render() {
     return (
       <div className="row wizard">
-        <WizardStep stepName="Elige experiencia" status="complete"/>
-        <WizardStep stepName="Método de pago" status="active"/>
-        <WizardStep stepName="Pago" status="disabled" />
+        {this.props.steps.map((step, i) => (
+            <WizardStep stepName={step.title} status={step.status} key={step.id}/>
+        ))}
       </div>
     );
   }
 }
+export default Wizard;

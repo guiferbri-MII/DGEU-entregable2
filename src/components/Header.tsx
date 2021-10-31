@@ -7,7 +7,7 @@ class Header extends React.Component<{},{}> {
     public render () {
         return (
             <nav className="navbar navbar-fixed-top navbar-light">
-                <img src={headerImage} className="logoHeader"/>         
+                <img src={headerImage} className="logoHeader" alt="AIRE"/>         
             </nav>
         );
     }

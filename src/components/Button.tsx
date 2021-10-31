@@ -10,7 +10,7 @@ interface ButtonProps {
   label?: string;
   buttonType: 'card' | 'form';
   icon: 'plus' | 'minus';
-  onClick?: () => void;
+  onClickButton: () => any;
 }
 
 export class Button extends React.Component<ButtonProps,{}> {
@@ -27,7 +27,7 @@ export class Button extends React.Component<ButtonProps,{}> {
     const { label, buttonType, icon, ...props } = this.props;
     const buttonStyle = buttonType == 'card' ? ((icon == 'minus' ? 'float-end ' : '') + 'cardButton') : 'formButton';
     return (
-      <button type="button" className={[buttonStyle,'btn btn-sm'].join(' ')} {...props}>
+      <button onClick={this.props.onClickButton} type="button" className={[buttonStyle,'btn btn-sm'].join(' ')} {...props}>
         {
             buttonType == 'card' ? (<FontAwesomeIcon icon={icon} />) : null
         }

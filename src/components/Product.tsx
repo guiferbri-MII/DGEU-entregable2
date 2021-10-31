@@ -19,6 +19,10 @@ export class Product extends React.Component<ProductProps,{}> {
     static defaultProps = {
       image : defaultImage
     };
+
+    public updateSummary = () => {
+        console.log('update');
+    }
   
     public render() {
       const { title, description, price, time, image, ...props } = this.props;
@@ -36,13 +40,13 @@ export class Product extends React.Component<ProductProps,{}> {
                         <p className="card-text float-end">{ price }€</p>  
                     </div>
                     <div className="col-4">
-                        <Button buttonType="card" icon="plus"/>
+                        <Button buttonType="card" icon="plus" onClickButton={this.updateSummary}/>
                     </div>
                     <div className="col-4 text-center cardQuantity">
                         1
                     </div>
                     <div className="col-4">
-                        <Button buttonType="card" icon="minus"/>
+                        <Button buttonType="card" icon="minus" onClickButton={this.updateSummary}/>
                     </div>
                 </div>
             </div>
@@ -50,3 +54,4 @@ export class Product extends React.Component<ProductProps,{}> {
       );
     }  
 }
+export default Product;

@@ -18,7 +18,9 @@
     "npm": "^8.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
     "react-scripts": "4.0.3",
+    "redux": "^4.1.2",
     "typescript": "^4.4.4",
     "web-vitals": "^1.1.2"
   },
@@ -66,6 +68,7 @@
     "@storybook/node-logger": "^6.3.12",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.12",
+    "@types/react-redux": "^7.1.20",
     "bootstrap-scss": "^5.1.1",
     "node-sass": "^6.0.1"
   }

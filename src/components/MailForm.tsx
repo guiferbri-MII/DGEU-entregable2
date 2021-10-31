@@ -15,6 +15,14 @@ export class MailForm extends React.Component<MailFormProps,{}> {
     online : true,
   };
 
+  public cancelButton = () => {
+    console.log('cancelar');
+  } 
+
+  public nextButton = () => {
+    
+  }
+
   public render() {
     const { online, ...props } = this.props;
     return (
@@ -106,10 +114,10 @@ export class MailForm extends React.Component<MailFormProps,{}> {
         </div>
         <div className="row justify-content-around">
           <div className="col-4">
-              <Button buttonType="form" label="Cancelar"/>
+              <Button buttonType="form" label="Cancelar" onClickButton={this.cancelButton}/>
           </div>
           <div className="col-4">
-              <Button buttonType="form" label="Siguiente"/>
+              <Button buttonType="form" label="Siguiente" onClickButton={this.nextButton}/>
           </div>
         </div>
       </form>
