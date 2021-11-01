@@ -9,7 +9,9 @@ library.add(faEnvelope, faShippingFast);
 interface RadioButtonProps {
   label: string;
   icon: 'envelope' | 'shipping-fast';
-  onClick?: () => void;
+  checked: boolean;
+  id: string;
+  onValueChange: (event:React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export class RadioButton extends React.Component<RadioButtonProps,{}> {
@@ -17,8 +19,12 @@ export class RadioButton extends React.Component<RadioButtonProps,{}> {
     super (props);
   }
 
+  static defaultProps = {
+    checked : false
+  };
+
   public render() {
-    const { label, icon, ...props } = this.props;
+    const { label, icon, checked, id, ...props } = this.props;
     return (
       <div className="col">
         <div className="row text-center form">
@@ -27,8 +33,8 @@ export class RadioButton extends React.Component<RadioButtonProps,{}> {
           </div>
           <div className="w-100"></div>
           <div className="col">
-            <input type="radio" className="btn-check" name="radiobutton" id={'radio-' + icon} autoComplete="off" />
-            <label className="btn formButton" htmlFor={'radio-' + icon}>
+            <input type="radio" className="btn-check" name="radiobutton" id={id} autoComplete="off" checked={checked} onChange={this.props.onValueChange}/>
+            <label className={[checked ? 'formChecked' : '','btn formButton'].join(' ')} {...props} htmlFor={id}>
               <FontAwesomeIcon icon={['fas',icon]}/>
             </label>
           </div>

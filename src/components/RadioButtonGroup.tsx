@@ -3,7 +3,8 @@ import '../assets/scss/main.scss';
 import { RadioButton } from './RadioButton';
 
 interface RadioButtonGroupProps {
-  onClick?: () => void;
+  idChecked: string;
+  onValueChange: (event:React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export class RadioButtonGroup extends React.Component<RadioButtonGroupProps,{}> {
@@ -16,8 +17,8 @@ export class RadioButtonGroup extends React.Component<RadioButtonGroupProps,{}> 
     return (
       <div className="btn-group" role="group">
         <div className="row">
-          <RadioButton label="Online" icon="envelope" />
-          <RadioButton label="Correo postal" icon="shipping-fast" />
+          <RadioButton label="Online" icon="envelope" id="online" checked={this.props.idChecked === 'online'} onValueChange={this.props.onValueChange}/>
+          <RadioButton label="Correo postal" icon="shipping-fast" id="postal" checked={this.props.idChecked === 'postal'} onValueChange={this.props.onValueChange}/>
         </div>
       </div>
     );

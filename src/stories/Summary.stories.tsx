@@ -20,11 +20,13 @@ const prod1 = {
   title: 'Baño Termal Ancient y Masaje Relajante',
   time: '120',
   price: 84,
+  quantity: 0
 };
 const prod2 = {
   title: 'Experiencia Baño de Vino',
   time: '180',
   price: 135,
+  quantity: 0
 };
 export const ProductSummary = Template.bind({});
 ProductSummary.args = {

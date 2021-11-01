@@ -63,9 +63,9 @@ $darkGrey: #1b1b1b;
 }
 
 //Card summary style
-.cardSummary{
+/*.cardSummary{
     width: 28rem;
-}
+}*/
 
 //Header
 .logoHeader{
@@ -205,4 +205,10 @@ $darkGrey: #1b1b1b;
 
 .formHead {
     color: $goldDarkColor;
+}
+
+.formChecked {
+    color: $goldDarkColor;
+    border: 3px solid $goldDarkColor;
+    border-radius: 0.25rem;
 }

@@ -1,11 +1,13 @@
 import React from 'react';
 import '../assets/scss/main.scss';
 
-interface SummaryProps {
+export interface SummaryProps {
     products : {
         title: string;
         price: number;
         time: string;
+        //id: string;
+        quantity: number;
     }[];
     applyDiscount: boolean;
     discount?: number;
@@ -26,7 +28,7 @@ export class Summary extends React.Component<SummaryProps,{}> {
         var totalPrice = 0;
         var porductList = this.props.products;
         for (var i in porductList){
-            totalPrice += porductList[i].price;
+            totalPrice += (porductList[i].price * porductList[i].quantity);
         }
         totalPrice = this.props.applyDiscount ? totalPrice - (this.props.discount != null ? this.props.discount : 0) : totalPrice;
         return(
@@ -39,7 +41,7 @@ export class Summary extends React.Component<SummaryProps,{}> {
                         {porductList.map((product, i) => (
                             <div className="col-12" key={'prod-'+i+'-div'}>
                                 <p className="card-text float-start" key={'prod-'+i+'-title'}>{product.title}</p>
-                                <p className="card-text float-end" key={'prod-'+i+'-price'}>{product.price}€</p>
+                                <p className="card-text float-end" key={'prod-'+i+'-price'}>{product.price * product.quantity}€</p>
                             </div>
                         ))}
                         {
@@ -56,3 +58,4 @@ export class Summary extends React.Component<SummaryProps,{}> {
         );
     }  
 }
+export default Summary;

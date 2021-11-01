@@ -25,7 +25,7 @@ export class Button extends React.Component<ButtonProps,{}> {
 
   public render() {
     const { label, buttonType, icon, ...props } = this.props;
-    const buttonStyle = buttonType == 'card' ? ((icon == 'minus' ? 'float-end ' : '') + 'cardButton') : 'formButton';
+    const buttonStyle = buttonType == 'card' ? ((icon == 'plus' ? 'float-end ' : '') + 'cardButton') : 'formButton';
     return (
       <button onClick={this.props.onClickButton} type="button" className={[buttonStyle,'btn btn-sm'].join(' ')} {...props}>
         {

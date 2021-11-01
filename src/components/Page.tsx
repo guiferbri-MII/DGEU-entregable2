@@ -1,6 +1,7 @@
 import React from 'react';
 import '../assets/scss/main.scss';
 import ProductList from '../containers/ProductList';
+import { Step2 } from './Step2';
 
 interface PageProps {
     activeStep: string;
@@ -14,18 +15,16 @@ export class Page extends React.Component<PageProps,{}> {
     public render() {
         const { ...props } = this.props;
         return (
-            <div className="row">
+            <div>
                 { (() => {
                 switch(this.props.activeStep){
                     case 'step-1':
-                    return (
-                        <ProductList />
-                    )
+                        return (<ProductList />)
                     case 'step-2':
-                    return ('STEP 2');
+                        return(<Step2 />)
                 }
                 }) ()}
-            </div>            
+            </div>
         );
     }
 }

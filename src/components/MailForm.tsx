@@ -20,7 +20,7 @@ export class MailForm extends React.Component<MailFormProps,{}> {
   } 
 
   public nextButton = () => {
-    
+
   }
 
   public render() {
@@ -82,7 +82,7 @@ export class MailForm extends React.Component<MailFormProps,{}> {
                 </div>
             }
           </div>
-          <p className="mt-3 mb-1 mailFormHead">Datos del comprador</p>
+          <p className="mt-3 mb-1 formHead">Datos del comprador</p>
           <div className="row row-cols-2">
             <div className="col">
               <label htmlFor="nameBuyer" className="form-label">Nombre</label>

@@ -5,6 +5,13 @@ interface IGlobalState {
         id: string
     }[],
     activeStep: string;
+    addedProducts : {
+        title: string,
+        price: number,
+        time: string,
+        id: string,
+        quantity: number
+    }[];
 }
 export default IGlobalState;
 
@@ -14,5 +21,6 @@ export const initialState: IGlobalState = {
         {title: 'Método de envío', status : 'disabled', id: 'step-2'},
         {title: 'Pago', status : 'disabled', id: 'step-3'}
     ],
-    activeStep: 'step-1'
+    activeStep: 'step-1',
+    addedProducts: []
 }

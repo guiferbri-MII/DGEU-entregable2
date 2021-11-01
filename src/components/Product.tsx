@@ -3,31 +3,58 @@ import '../assets/scss/main.scss';
 import defaultImage from '../assets/img/airelogo.jpeg';
 import { Button } from './Button';
 
-interface ProductProps {
+export interface ProductProps {
     title: string;
     description: string;
     price: number;
     time: string;
     image?: string;
+    idProd: string;
+    updateSummary: (product:any) => any;
 }
 
-export class Product extends React.Component<ProductProps,{}> {
+interface IProductState {
+    quantity: number;
+}
+
+export class Product extends React.Component<ProductProps,IProductState> {
     constructor(props: ProductProps) {
       super (props);
+      this.state = {quantity: 0};
     }
   
     static defaultProps = {
       image : defaultImage
     };
 
-    public updateSummary = () => {
-        console.log('update');
+    public updateSummary = (quantity:number) => {
+        var product = {
+            title: this.props.title,
+            price: this.props.price,
+            time: this.props.time,
+            id: this.props.idProd,
+            quantity: quantity,
+        }
+        this.props.updateSummary(product);
     }
   
     public render() {
-      const { title, description, price, time, image, ...props } = this.props;
+        const { title, description, price, time, image, ...props } = this.props;
+        let quantity = this.state.quantity;
+        const addProduct = () => {
+            quantity += 1;
+            this.setState({quantity: quantity});
+            this.updateSummary(quantity);
+        }
+        const removeProduct = () => {
+            if (quantity > 0) {
+                quantity -= 1;
+                this.setState({quantity: quantity});
+                this.updateSummary(quantity);
+            }
+        }
       return (
-        <div className={['card cardProduct'].join(' ')} {...props}>
+        <div className={['card cardProduct', 'mx-1', 'my-1'].join(' ')} {...props}>
             <img src={ image } className="card-img-top" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{ title }</h5>
@@ -40,13 +67,13 @@ export class Product extends React.Component<ProductProps,{}> {
                         <p className="card-text float-end">{ price }€</p>  
                     </div>
                     <div className="col-4">
-                        <Button buttonType="card" icon="plus" onClickButton={this.updateSummary}/>
+                        <Button buttonType="card" icon="minus" onClickButton={removeProduct}/>
                     </div>
                     <div className="col-4 text-center cardQuantity">
-                        1
+                        {this.state.quantity}
                     </div>
                     <div className="col-4">
-                        <Button buttonType="card" icon="minus" onClickButton={this.updateSummary}/>
+                        <Button buttonType="card" icon="plus" onClickButton={addProduct}/>
                     </div>
                 </div>
             </div>
