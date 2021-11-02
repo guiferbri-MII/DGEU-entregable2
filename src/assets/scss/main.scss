@@ -41,6 +41,15 @@ $darkGrey: #1b1b1b;
     -webkit-box-orient: vertical;
 }
 
+.card-title{
+    min-height: 45px;
+}
+
+.cardImage {
+    width: 262px;
+    height: 262px;
+}
+
 //Card products style
 .cardProduct{
     width: 18rem;

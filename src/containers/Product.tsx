@@ -7,7 +7,7 @@ const mapStateToProps = (state: IGlobalState) => {
     return ({products: state.addedProducts});
 }
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    updateSummary: (product:any) => {
+    updatesummary: (product:any) => {
         dispatch({type: 'ADD_PRODUCT', product: product});
     }
 })

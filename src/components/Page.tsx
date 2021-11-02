@@ -1,6 +1,6 @@
 import React from 'react';
 import '../assets/scss/main.scss';
-import ProductList from '../containers/ProductList';
+import Step1 from '../containers/Step1';
 import Step2 from '../containers/Step2';
 
 interface PageProps {
@@ -19,9 +19,9 @@ export class Page extends React.Component<PageProps,{}> {
                 { (() => {
                 switch(this.props.activeStep){
                     case 'step-1':
-                        return (<ProductList />)
+                        return (<Step1 />)
                     case 'step-2':
-                        return(<Step2 />)
+                        return (<Step2 />)
                 }
                 }) ()}
             </div>

@@ -3,6 +3,16 @@ import '../assets/scss/main.scss';
 import Product from '../containers/Product';
 import { Button } from './Button';
 
+export interface InfoProduct {
+    title: string;
+    description: string;
+    price: number;
+    time: string;
+    idprod: string,
+    image?: string,
+    center: string
+}
+
 interface ProductListProps {
     addedProducts: {
         title: string;
@@ -11,6 +21,7 @@ interface ProductListProps {
         id: string,
         quantity: number
     }[];
+    productList: InfoProduct[];
     onClickNext: () => any;
 }
   
@@ -23,23 +34,22 @@ export class ProductList extends React.Component<ProductListProps,{}> {
         const { ...props } = this.props;
 
         const validate = () => {
-            console.log('validate'); //ToDo comprobar que se han añadido prods, si hay..llamar a onclicknext
             if (this.props.addedProducts.length > 0) {
                 this.props.onClickNext();
-            } else {
-                //ToDo: Mostrar error
             }
-            console.log(JSON.stringify(this.props.addedProducts)); //ToDo: borrar
         }
 
         return (
         <div className="row justify-content-md-center">
-            <Product idProd="prod-1" title="Producto 1" description="Descripcion producto 1" price={120} time="30" />
-            <Product idProd="prod-2" title="Producto 2" description="Descripcion producto 2" price={60} time="15" />
-            <Product idProd="prod-3" title="Producto 3" description="Descripcion producto 3" price={180} time="90" />
-            <div className="text-center">
-                <Button label="Siguiente" buttonType="form" onClickButton={validate}/>
-            </div>
+            {this.props.productList.map((product, i) => (
+                <Product idprod={product.idprod} key={product.idprod} title={product.title} description={product.description} price={product.price} time={product.time} image={product.image}/>
+            ))}
+            {
+                this.props.addedProducts.length > 0 ? 
+                <div className="text-center">
+                    <Button label="Siguiente" buttonType="form" onClickButton={validate}/>
+                </div> : null
+            }
         </div>
         );
     }

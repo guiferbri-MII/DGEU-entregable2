@@ -13,18 +13,20 @@ interface FilterProps {
   options?: string[];
   min?: number;
   max?: number;
-  onChange?: () => void;
+  onChange: (value: string) => any;
 }
 
 interface FilterState{
-  valueRange: number
+  valueRange: number,
+  valueSelect: string
 }
 
 export class Filter extends React.Component<FilterProps,FilterState> {
   constructor(props: FilterProps) {
     super (props);
     this.state = {
-      valueRange: 50
+      valueRange: 80,
+      valueSelect: ''
     }
   }
 
@@ -33,7 +35,7 @@ export class Filter extends React.Component<FilterProps,FilterState> {
     if (wrap != null) {
       const range = wrap.querySelector(".filterRange");
       const bubble = wrap.querySelector(".filterRangeValue");
-        this.setRangeValue(range, bubble);
+      this.setRangeValue(range, bubble);
     }
     
   }
@@ -47,9 +49,25 @@ export class Filter extends React.Component<FilterProps,FilterState> {
   
     bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
     this.setState({valueRange: range.value});
+    this.props.onChange(range.value);
   }
 
   public render() {
+  
+    const changeCheck = () => {
+      var checkboxes = document.querySelectorAll('input[type="checkbox"][name="checkbox"]');
+      let selectedValues: string[] = [];
+      checkboxes.forEach(element => {
+        var checkbox = element as HTMLInputElement;
+        if (checkbox.checked) {
+          selectedValues.push(checkbox.value);
+        }
+      });
+      this.props.onChange(selectedValues.join(','));
+    }
+    const changeSelect = (event:React.ChangeEvent<HTMLSelectElement>) => {
+      this.props.onChange(event.target.value);
+    }
     const { label, filterType, options, min, max, ...props } = this.props;
     return (
       <div className="filter">        
@@ -61,9 +79,9 @@ export class Filter extends React.Component<FilterProps,FilterState> {
                     <label className="form-label">{label}</label>
                     <div>
                       {(options != null && Array.isArray(options) && options.length > 0) ? options.map((option) => (
-                        <div className="form-check form-check-inline">
-                          <input className="form-check-input" type="checkbox" id={"inlineCheckbox" + option} value={option} key={'input-'+option}/>
-                          <label className="form-check-label" htmlFor={"inlineCheckbox" + option} key={'label-' + option}>{option}</label>
+                        <div className="form-check form-check-inline" key={'div-' + option}>
+                          <input className="form-check-input" type="checkbox" id={"inlineCheckbox" + option} name="checkbox" value={option} key={'input-'+option} onChange={changeCheck}/>
+                          <label className="form-check-label" htmlFor={"inlineCheckbox" + option} key={'label-' + option}>{option +'\''}</label>
                         </div>
                       )) : null}
                     </div>
@@ -84,7 +102,7 @@ export class Filter extends React.Component<FilterProps,FilterState> {
                       <div className="filterGroupItem">
                         <div className="filterRangeWrap">
                           <input type="range" className="form-range filterRange" min={min} max={max} id="range" onInput={this.changeRange}></input>                          
-                          <output  className="filterRangeValue" style={{left : 'calc('+newVal+'% + ('+(8 - newVal * 0.15)+'px))'}}>{this.state.valueRange}</output>
+                          <output  className="filterRangeValue" style={{left : 'calc(3% + ('+(8 - newVal * 0.15)+'px))'}}>{this.state.valueRange}</output>
                         </div>
                       </div>
                       <div className="filterGroupItem">
@@ -97,8 +115,8 @@ export class Filter extends React.Component<FilterProps,FilterState> {
                 return(
                   <div className="">
                     <label htmlFor="select" className="form-label">{label}</label>
-                    <select className="form-select filterSelect" id="select">
-                      <option value="-">Seleccione el Centro</option>
+                    <select className="form-select filterSelect" id="select" onChange={changeSelect}>
+                      <option value="" key="-">Seleccione el Centro</option>
                       {options != null ? options.map((option) => (
                         <option value={option} key={option}>{option}</option>
                       )) : null}

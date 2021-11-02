@@ -9,8 +9,8 @@ export interface ProductProps {
     price: number;
     time: string;
     image?: string;
-    idProd: string;
-    updateSummary: (product:any) => any;
+    idprod: string;
+    updatesummary: (product:any) => any;
 }
 
 interface IProductState {
@@ -32,10 +32,10 @@ export class Product extends React.Component<ProductProps,IProductState> {
             title: this.props.title,
             price: this.props.price,
             time: this.props.time,
-            id: this.props.idProd,
+            id: this.props.idprod,
             quantity: quantity,
         }
-        this.props.updateSummary(product);
+        this.props.updatesummary(product);
     }
   
     public render() {
@@ -55,7 +55,7 @@ export class Product extends React.Component<ProductProps,IProductState> {
         }
       return (
         <div className={['card cardProduct', 'mx-1', 'my-1'].join(' ')} {...props}>
-            <img src={ image } className="card-img-top" alt="..." />
+            <img src={ image } className="card-img-top cardImage" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{ title }</h5>
                 <p className="card-text">{ description }</p>

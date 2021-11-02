@@ -27,11 +27,13 @@ export class Step2 extends React.Component<IStep2Props,IStep2State> {
         }
 
         return(
-            <div className="row">
-                <div className="text-center mb-2">
-                    <RadioButtonGroup idChecked={this.state.idChecked} onValueChange={onValueChange}/>
+            <div className="container">
+                <div className="row">
+                    <div className="text-center mb-2">
+                        <RadioButtonGroup idChecked={this.state.idChecked} onValueChange={onValueChange}/>
+                    </div>
                 </div>
-                <div className="">
+                <div className="row">
                     <MailForm online={this.state.idChecked === 'online'} onClickCancel={this.props.onClickCancel} onClickNext={this.props.onClickNext} />
                 </div>
             </div>

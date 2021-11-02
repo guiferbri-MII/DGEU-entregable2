@@ -7,19 +7,34 @@ import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faFilter);
 
-interface FiltersProps {
-  collapsed: boolean;
-  onFilterClick: (collpase: boolean) => any;
+interface IFiltersProps {
+  onChangeFilter: (field:string, value: string) => any;
 }
 
-export class Filters extends React.Component<FiltersProps,{}> {
-  constructor(props: FiltersProps) {
+interface IFiltersState {
+  collapsed: boolean;
+}
+
+export class Filters extends React.Component<IFiltersProps,IFiltersState> {
+  constructor(props:IFiltersProps) {
     super(props);
+    this.state = { collapsed : false }
   }
 
   public render() {
     const onClick = () => {
-        this.props.onFilterClick(!this.props.collapsed);
+        this.setState({
+          collapsed: !this.state.collapsed
+        });
+    };
+    const filterTime = (value:string) => {
+        this.props.onChangeFilter('time', value);
+    };
+    const filterCenter = (value:string) => {
+      this.props.onChangeFilter('center', value);
+    };
+    const filterPrice = (value:string) => {
+      this.props.onChangeFilter('price', value);
     };
     return (
       <div className="row">
@@ -31,17 +46,17 @@ export class Filters extends React.Component<FiltersProps,{}> {
             </a>
           </div>
         </div>
-        {!!!this.props.collapsed ? null : 
+        {!!!this.state.collapsed ? null : 
           <div className="col-12">
             <div className="row">
                 <div className="col-4">
-                  <Filter label="Centro" key="center" filterType={FilterType.combo} options={['Sevilla','Barcelona','Chicago']}/>
+                  <Filter label="Centro" key="center" filterType={FilterType.combo} options={['Sevilla','Barcelona','Chicago']} onChange={filterCenter}/>
                 </div>
                 <div className="col-4">
-                  <Filter label="Tiempo" key="time" filterType={FilterType.checkbox} options={['15\'','30\'','120\'']}/>
+                  <Filter label="Tiempo" key="time" filterType={FilterType.checkbox} options={['30','120','180']} onChange={filterTime}/>
                 </div>
                 <div className="col-4">
-                  <Filter label="Precio" key="price" filterType={FilterType.range} min={40} max={180}/>
+                  <Filter label="Precio" key="price" filterType={FilterType.range} min={60} max={140} onChange={filterPrice}/>
                 </div>
             </div>
           </div>
@@ -50,3 +65,4 @@ export class Filters extends React.Component<FiltersProps,{}> {
     );
   }
 }
+export default Filters;

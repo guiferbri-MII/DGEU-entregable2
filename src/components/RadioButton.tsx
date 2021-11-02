@@ -11,7 +11,7 @@ interface RadioButtonProps {
   icon: 'envelope' | 'shipping-fast';
   checked: boolean;
   id: string;
-  onValueChange: (event:React.ChangeEvent<HTMLInputElement>) => void;
+  onValueChange: (event:React.ChangeEvent<HTMLInputElement>) => any;
 }
 
 export class RadioButton extends React.Component<RadioButtonProps,{}> {

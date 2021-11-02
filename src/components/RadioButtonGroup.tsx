@@ -4,7 +4,7 @@ import { RadioButton } from './RadioButton';
 
 interface RadioButtonGroupProps {
   idChecked: string;
-  onValueChange: (event:React.ChangeEvent<HTMLInputElement>) => void;
+  onValueChange: (event:React.ChangeEvent<HTMLInputElement>) => any;
 }
 
 export class RadioButtonGroup extends React.Component<RadioButtonGroupProps,{}> {

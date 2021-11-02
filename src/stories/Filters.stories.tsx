@@ -18,5 +18,4 @@ const Template: ComponentStory<typeof Filters> = (args) => <Filters {...args} />
 
 export const BasicFilters = Template.bind({});
 BasicFilters.args = {
-  collapsed: true
 };

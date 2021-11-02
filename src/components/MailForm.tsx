@@ -242,11 +242,11 @@ export class MailForm extends React.Component<MailFormProps,MailFormState> {
             </div>
           </div>
         </div>
-        <div className="row justify-content-around">
-          <div className="col-4">
+        <div className="row justify-content-around mt-3">
+          <div className="col-1">
               <Button buttonType="form" label="Cancelar" onClickButton={this.props.onClickCancel}/>
           </div>
-          <div className="col-4">
+          <div className="col-1">
               <Button buttonType="form" label="Siguiente" onClickButton={validate}/>
           </div>
         </div>
