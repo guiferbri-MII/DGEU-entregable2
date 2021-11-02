@@ -7,9 +7,14 @@ interface IStep2State {
     idChecked: string;
 }
 
-export class Step2 extends React.Component<{},IStep2State> {
-    constructor() {
-        super ({});
+interface IStep2Props {
+    onClickNext: () => void;
+    onClickCancel: () => void;
+}
+
+export class Step2 extends React.Component<IStep2Props,IStep2State> {
+    constructor(props: IStep2Props) {
+        super (props);
         this.state= {idChecked : 'online'};
     }
 
@@ -27,7 +32,7 @@ export class Step2 extends React.Component<{},IStep2State> {
                     <RadioButtonGroup idChecked={this.state.idChecked} onValueChange={onValueChange}/>
                 </div>
                 <div className="">
-                    <MailForm online={this.state.idChecked === 'online'}/>
+                    <MailForm online={this.state.idChecked === 'online'} onClickCancel={this.props.onClickCancel} onClickNext={this.props.onClickNext} />
                 </div>
             </div>
         );

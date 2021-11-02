@@ -1,7 +1,7 @@
 import React from 'react';
 import '../assets/scss/main.scss';
 import ProductList from '../containers/ProductList';
-import { Step2 } from './Step2';
+import Step2 from '../containers/Step2';
 
 interface PageProps {
     activeStep: string;

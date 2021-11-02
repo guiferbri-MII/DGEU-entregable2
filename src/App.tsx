@@ -12,12 +12,12 @@ import { IProductAction } from './actions/ProductActions';
 //import './App.css';
 
 const reducer = (state: IGlobalState = initialState, action: Action) => {
+  let steps = state.steps;
   switch (action.type) {
     case 'NEXT_STEP':
       const buttonAction = action as IButtonAction;
       var nextStep = buttonAction.nextStep;
       console.log('AQUI: ' + nextStep);
-      let steps = state.steps;
       steps.forEach(function (step) {
         if (step.id == nextStep) {
           step.status = 'active';
@@ -26,6 +26,19 @@ const reducer = (state: IGlobalState = initialState, action: Action) => {
           step.status = 'complete';
         }
       });
+      return {...state, activeStep: nextStep, steps: steps}
+    case 'BACK_STEP':
+      const buttonActionBack = action as IButtonAction;
+      var nextStep = buttonActionBack.nextStep;
+      console.log('AQUI: ' + nextStep);
+      steps.forEach(function (step) {
+        if (step.id == nextStep) {
+          step.status = 'active';
+        }
+        if (step.id == buttonActionBack.currentStep) {
+          step.status = 'disabled';
+        }
+      }); //ToDo: Mantener lo que habia en el paso
       return {...state, activeStep: nextStep, steps: steps}
     case 'ADD_PRODUCT':
       const productAction = action as IProductAction;
