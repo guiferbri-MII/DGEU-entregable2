@@ -2,11 +2,16 @@ import React from 'react';
 import '../assets/scss/main.scss';
 import { WizardStep } from './WizardStep';
 
-//ToDo poner como Enum el status
+export enum Status{
+  complete = "complete",
+  active = "active",
+  disabled = "disabled"
+}
+
 interface WizardProps {
   steps: {
     title: string,
-    status: 'complete' | 'active' | 'disabled';
+    status: Status;
     id: string
   }[]
 }

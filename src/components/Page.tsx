@@ -1,5 +1,6 @@
 import React from 'react';
 import '../assets/scss/main.scss';
+import PaymentForm from '../containers/PaymentForm';
 import Step1 from '../containers/Step1';
 import Step2 from '../containers/Step2';
 
@@ -22,6 +23,14 @@ export class Page extends React.Component<PageProps,{}> {
                         return (<Step1 />)
                     case 'step-2':
                         return (<Step2 />)
+                    case 'step-3':
+                        return (
+                            <div className="container">
+                                <div className="row">
+                                    <PaymentForm />
+                                </div>
+                            </div>
+                        )
                 }
                 }) ()}
             </div>

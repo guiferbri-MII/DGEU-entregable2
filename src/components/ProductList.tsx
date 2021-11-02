@@ -46,7 +46,7 @@ export class ProductList extends React.Component<ProductListProps,{}> {
             ))}
             {
                 this.props.addedProducts.length > 0 ? 
-                <div className="text-center">
+                <div className="text-center my-3">
                     <Button label="Siguiente" buttonType="form" onClickButton={validate}/>
                 </div> : null
             }

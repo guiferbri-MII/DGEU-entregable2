@@ -17,5 +17,4 @@ export default {
 const Template: ComponentStory<typeof Filters> = (args) => <Filters {...args} />;
 
 export const BasicFilters = Template.bind({});
-BasicFilters.args = {
-};
+BasicFilters.args = {};

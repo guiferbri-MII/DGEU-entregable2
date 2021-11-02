@@ -1,7 +1,8 @@
+import { Status } from '../components/Wizard'
 interface IGlobalState {
     steps: {
         title: string,
-        status: 'complete' | 'active' | 'disabled'; //ToDo poner como Enum el status
+        status: Status;
         id: string
     }[],
     activeStep: string;
@@ -12,15 +13,19 @@ interface IGlobalState {
         id: string,
         quantity: number
     }[];
+    applyDiscount:boolean;
+    discount:number;
 }
 export default IGlobalState;
 
 export const initialState: IGlobalState = {
     steps: [
-        {title: 'Elige experiencia', status : 'active', id: 'step-1'},
-        {title: 'Método de envío', status : 'disabled', id: 'step-2'},
-        {title: 'Pago', status : 'disabled', id: 'step-3'}
+        {title: 'Elige experiencia', status : Status.active, id: 'step-1'},
+        {title: 'Método de envío', status : Status.disabled, id: 'step-2'},
+        {title: 'Pago', status : Status.disabled, id: 'step-3'}
     ],
     activeStep: 'step-1',
-    addedProducts: []
+    addedProducts: [],
+    applyDiscount: false,
+    discount: 0
 }

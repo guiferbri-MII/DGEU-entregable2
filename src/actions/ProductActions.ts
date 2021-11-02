@@ -1,5 +1,9 @@
 import { Action } from 'redux';
 
+export enum ProductActions {
+    ADD_PRODUCT = "ADD_PRODUCT"
+}
+
 export interface IProductAction extends Action {
     product: {
         title: string,
@@ -7,6 +11,5 @@ export interface IProductAction extends Action {
         time: string;
         id: string,
         quantity: number,
-    };
-    add: boolean;
+    }
 }

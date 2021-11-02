@@ -72,9 +72,13 @@ $darkGrey: #1b1b1b;
 }
 
 //Card summary style
-/*.cardSummary{
-    width: 28rem;
-}*/
+.cardSummary > .card-body > .row > .col-12 > .card-text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
 
 //Header
 .logoHeader{
