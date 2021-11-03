@@ -1,6 +1,7 @@
 import React from 'react';
 import '../assets/scss/main.scss';
-import { MailForm } from './MailForm';
+import { DataForm } from './MailForm';
+import MailForm from '../components/MailForm';
 import { RadioButtonGroup } from './RadioButtonGroup';
 
 interface IStep2State {
@@ -8,14 +9,16 @@ interface IStep2State {
 }
 
 interface IStep2Props {
-    onClickNext: () => void;
+    dataForm: DataForm;
+    idChecked: string;
+    onClickNext: (dataForm: DataForm, idChecked: string) => void;
     onClickCancel: () => void;
 }
 
 export class Step2 extends React.Component<IStep2Props,IStep2State> {
     constructor(props: IStep2Props) {
         super (props);
-        this.state= {idChecked : 'online'};
+        this.state= {idChecked : this.props.idChecked};
     }
 
     public render() {
@@ -34,7 +37,7 @@ export class Step2 extends React.Component<IStep2Props,IStep2State> {
                     </div>
                 </div>
                 <div className="row">
-                    <MailForm online={this.state.idChecked === 'online'} onClickCancel={this.props.onClickCancel} onClickNext={this.props.onClickNext} />
+                    <MailForm dataForm={this.props.dataForm} online={this.state.idChecked === 'online'} onClickCancel={this.props.onClickCancel} onClickNext={this.props.onClickNext} />
                 </div>
             </div>
         );

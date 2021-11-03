@@ -1,16 +1,18 @@
 import React from 'react';
 import '../assets/scss/main.scss';
-import ProductList from '../containers/ProductList';
-import { InfoProduct } from './ProductList';
+//import ProductList from '../containers/ProductList';
+import ProductList from '../components/ProductList';
+import { IProduct } from '../components/Product';
 import { Filters } from './Filters';
 import prod1Image from '../assets/img/prod1.jpeg';
 
 interface IStep1Props {
+    addedProducts: IProduct[];
     onClickNext: () => void;
 }
 
 interface IStep2State{
-    filterProducts: InfoProduct[];
+    filterProducts: IProduct[];
     filters: {
         time: string[];
         price: number | null;
@@ -23,25 +25,28 @@ const prod1 = {
     description: 'Un viaje de sensaciones en un edificio histórico y a la luz de las velas que consiste en un recorrido libre por distintas salas de agua a diferentes temperaturas. Incluye un masaje relajante de 30 min.',
     time: '120',
     price: 84,
-    idprod: 'prod-1',
+    id: 'prod-1',
     image: prod1Image,
-    center: 'Sevilla'
+    center: 'Sevilla',
+    quantity: 0
 };
 const prod2  = {
-    idprod: 'prod-2',
+    id: 'prod-2',
     title: 'Experiencia Baño de Vino',
     time: '180',
     description: 'Acceso exclusivo durante 30 min. al Baño de Vino con propiedades antioxidantes, donde se aplica un masaje craneofacial y puedes degustar una copa de vino acompañado de nueces y queso. A continuación, un masaje corporal relajante de 45 min. Incluye recorrido termal.',
     price: 135,
-    center: 'Sevilla'
+    center: 'Sevilla',
+    quantity: 0
 };
 const prod3  = {
-    idprod: 'prod-3',
+    id: 'prod-3',
     title: 'Ritual del Agua',
     time: '120',
     description: 'Masaje de 30 min. que se realiza dentro del agua mientras te entregas a la incomparable sensación de flotar. Libera tensiones físicas y emocionales a través de la interacción con el agua y las milenarias técnicas Shiatsu. Incluye un zumo de frutas o una infusión relajante y recorrido termal.',
     price: 105,
-    center: 'Barcelona'
+    center: 'Barcelona',
+    quantity: 0
 };
 const allProductsList = [prod1, prod2, prod3];
   
@@ -116,7 +121,7 @@ export class Step1 extends React.Component<IStep1Props,IStep2State> {
         return (
             <div className="container">
                 <Filters onChangeFilter={onFilterClick}/>
-                <ProductList productList={this.state.filterProducts}/>
+                <ProductList productList={this.state.filterProducts} addedProducts={this.props.addedProducts} onClickNext={this.props.onClickNext}/>
             </div>
         );
     }

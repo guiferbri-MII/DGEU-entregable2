@@ -10,6 +10,7 @@ import { IButtonAction, ButtonActions } from './actions/ButtonActions';
 import { IProductAction, ProductActions } from './actions/ProductActions';
 import { IPaymentDiscountAction, PaymentActions } from './actions/PaymentActions';
 import { Status } from './components/Wizard';
+import { MailFormActions, IMailFormActionsAction } from './actions/MailFormActions';
 //import logo from './logo.svg';
 //import './App.css';
 
@@ -75,7 +76,18 @@ const reducer = (state: IGlobalState = initialState, action: Action) => {
           break;
       }
       return {...state, applyDiscount: applyDiscount, discount:discount}
-
+    case MailFormActions.MAILFORM_FILLED:
+      const mailformAction = action as IMailFormActionsAction;
+      var nextStep = mailformAction.nextStep;
+      steps.forEach(function (step) {
+        if (step.id == nextStep) {
+          step.status = Status.active;
+        }
+        if (step.id == mailformAction.currentStep) {
+          step.status = Status.complete;
+        }
+      });
+      return {...state, activeStep: nextStep, steps: steps, dataForm: mailformAction.dataForm, idChecked: mailformAction.idChecked}
   }
   return state;
 }

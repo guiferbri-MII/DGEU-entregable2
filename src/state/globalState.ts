@@ -1,4 +1,7 @@
 import { Status } from '../components/Wizard'
+import { IProduct } from '../components/Product';
+import { DataForm } from '../components/MailForm';
+
 interface IGlobalState {
     steps: {
         title: string,
@@ -6,15 +9,11 @@ interface IGlobalState {
         id: string
     }[],
     activeStep: string;
-    addedProducts : {
-        title: string,
-        price: number,
-        time: string,
-        id: string,
-        quantity: number
-    }[];
+    addedProducts: IProduct[];
     applyDiscount:boolean;
     discount:number;
+    idChecked: string,
+    dataForm: DataForm;
 }
 export default IGlobalState;
 
@@ -27,5 +26,23 @@ export const initialState: IGlobalState = {
     activeStep: 'step-1',
     addedProducts: [],
     applyDiscount: false,
-    discount: 0
+    discount: 0,
+    idChecked: 'online',
+    dataForm: {
+        name: '',
+        lastname: '',
+        phone: '',
+        email: '',
+        address: '',
+        postalCode: '',
+        city: '',
+        state: '',
+        country: '',
+        nameBuyer: '',
+        lastnameBuyer: '',
+        phoneBuyer: '',
+        emailBuyer: '',
+        termsCheck: '',
+        privacityCheck: ''
+    }
 }
