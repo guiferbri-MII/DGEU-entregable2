@@ -10,7 +10,8 @@ const mapStateToProps = (state: IGlobalState) => {
 }
 const mapDispatchToProps = (dispatch: Dispatch) => ({
     onClickFinish: () => {
-        alert('ENHORABUENA!!')
+        alert('ENHORABUENA!! Disfrute de su compra.');
+        window.location.reload();
     },
     onClickCancel: () => {
         dispatch({type: ButtonActions.BACK_STEP, nextStep: 'step-2', currentStep: 'step-3'});

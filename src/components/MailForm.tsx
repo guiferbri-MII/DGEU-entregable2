@@ -74,18 +74,6 @@ export class MailForm extends React.Component<MailFormProps,MailFormState> {
     }
 
     const validations:any = {
-      /*name: {
-        pattern: {
-          value: '^[A-Za-z]*$',
-          message: "Nombre inválido",
-        }
-      },
-      lastname: {
-        pattern: {
-          value: '^[A-Za-z]*$',
-          message: "Apellido inválido",
-        }
-      },*/
       phone: {
         pattern: {
           value: '^[6-9]{1}[0-9]{8}$',

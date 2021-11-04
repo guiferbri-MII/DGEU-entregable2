@@ -98,8 +98,8 @@ class App extends React.Component{
   public render() {
     return (
       <Provider store={store}>
-        <div className="App container-fluid">
-          <div className="row">
+        <div className="App aire container-fluid">
+          <div className="row mb-3">
             <Header />
           </div>
           <Wizard />

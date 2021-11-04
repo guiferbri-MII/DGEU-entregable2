@@ -3,15 +3,16 @@
 $goldColor: #c2a471;
 $goldDarkColor: #9f7b07;
 $whiteColor: white;
-$darkGrey: #1b1b1b;
+$darkGrey: #414141;
+$backgroundGrey: #272727;
 
 @mixin flexHor {
     flex-direction: row;
     display: flex;    
 }
 
-.body{
-    background-color:$darkGrey;
+body{
+    background-color:$backgroundGrey;
     color: $goldColor;
 }
 
@@ -22,71 +23,68 @@ $darkGrey: #1b1b1b;
 
 .formButtonInverse{
     color: $goldColor;
-}
-.formButtonInverse:hover{
-    color: $whiteColor;
+    &:hover{
+        color: $whiteColor;
+    }
 }
 
 //Card style
 .card {
     background-color: $darkGrey;
     color: $goldColor;
-}
+    .cardQuantity {
+        color: $whiteColor;
+    }
+    .card-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        &.card-summary-title {
+            width: 80%;
+        }
+        &.card-summary {
+            -webkit-line-clamp: 1;
+        }
+        &.card-prod {
+            -webkit-line-clamp: 3;
+        }
+    }    
+    .card-title{
+        min-height: 45px;
+    }
+    .cardImage {
+        width: 100%;
+        height: 262px;
+    }
 
-.card-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
-
-.card-title{
-    min-height: 45px;
-}
-
-.cardImage {
-    width: 262px;
-    height: 262px;
-}
-
-//Card products style
-.cardProduct{
-    width: 18rem;
-}
-
-.cardButton {
-    width: 25px;
-    height: 25px;
-    padding: 6px 0px;
-    border-radius: 15px;
-    text-align: center;
-    font-size: 12px;
-    line-height: 0.42857;
-    background-color: $goldColor;
-    color: $whiteColor;
-}
-
-.cardQuantity {
-    color: $whiteColor;
-}
-
-//Card summary style
-.cardSummary > .card-body > .row > .col-12 > .card-text{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+    //Card products style
+    &.cardProduct{
+        width: 18rem;
+    }    
+    .cardButton {
+        width: 25px;
+        height: 25px;
+        padding: 6px 0px;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 12px;
+        line-height: 0.42857;
+        background-color: $goldColor;
+        color: $whiteColor;
+    }
 }
 
 //Header
+.navbarHeader {
+    background-color: $goldColor;
+}
 .logoHeader{
     width: 22rem;
 }
 
 //Filters
-.filter{
+.filter, .filterSelect{
     color: $goldColor;
 }
 
@@ -95,133 +93,137 @@ $darkGrey: #1b1b1b;
     color: $goldColor;
 }
 
-.filterSelect {
-    color: $goldColor;
-}
-
-.filterRange::-webkit-slider-thumb {
-    background: $goldDarkColor;
-}
-.filterRange::-webkit-slider-runnable-track {
-    background: $goldColor;
-}
-
-.filterRange::-moz-range-thumb {
-    background: $goldDarkColor;
-}
-.filterRange::-moz-range-track {
-    background: $goldColor;
-}
-
-.filterRange::-ms-thumb {
-    background: $goldDarkColor;
-}
-.filterRange::-ms-track {
-    background: $goldColor;
-}
-.filterRangeWrap {
-    position: relative;
-    margin: 0 auto 3rem;
-  }
-.filterRangeValue {
-    color: $whiteColor;
-    position: absolute;
-    transform: translate(-50%, 60%);
-}
-.filterRangeValue::after {
-    content: "";
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    top: -1px;
-    left: 50%;
+.filterRange {
+    &::-webkit-slider-thumb{
+        background: $goldDarkColor;
+    }
+    &::-moz-range-track{
+        background: $goldColor;
+    }
+    &::-moz-range-thumb{
+        background: $goldDarkColor;
+    }
+    &::-webkit-slider-runnable-track{
+        background: $goldColor;
+    }
+    &::-ms-thumb {
+        background: $goldDarkColor;
+    }
+    &::-ms-track {
+        background: $goldColor;
+    }
 }
 
 .filterRangeGroup{
     @include flexHor;
     padding-left: 0;
-}
-
-.filterGroupItem{
-    display: block;
-    padding: 0.5rem 1rem;
+    .filterGroupItem{
+        display: block;
+        padding: 0.5rem 1rem;
+        .filterRangeWrap {
+            position: relative;
+            margin: 0 auto 3rem;
+            .filterRangeValue {
+                color: $whiteColor;
+                position: absolute;
+                transform: translate(-50%, 60%);
+                &:after{
+                    content: "";
+                    position: absolute;
+                    width: 2px;
+                    height: 2px;
+                    top: -1px;
+                    left: 50%;
+                }
+            }
+        }
+    }
 }
 
 //Wizard
 .wizard {
-    //border-bottom: solid 1px #e0e0e0; 
     padding: 0 0 10px 0;
+    .wizardStep {
+        padding: 0; 
+        position: relative;
+        &.complete > .wizardProgress > .wizardProgressBar{
+            width:100%;
+        }
+        &.active > .wizardProgress > .wizardProgressBar{
+            width:50%;
+        }
+        &:first-child {
+            &.active > .wizardProgress > .wizardProgressBar {
+                width:0%;
+            }
+            > .wizardProgress {left: 50%; width: 50%;}
+        }
+        &:last-child {
+            &.active > .wizardProgress > .wizardProgressBar {
+                width:100%;
+            }
+            > .wizardProgress {width: 50%;}
+        }
+        &.disabled {
+            > .wizardCircle {
+                background-color: $darkGrey;
+                &:after {
+                    opacity: 0;
+                }
+            }
+        }
+    }    
+    .wizardStepName{
+        color: $goldColor;
+        font-size: 14px; 
+        margin-bottom: 5px;
+    }    
+    .wizardProgress{
+        position: relative; 
+        border-radius: 0px; 
+        height: 8px; 
+        box-shadow: none; 
+        margin: 20px 0;
+    }    
+    .wizardProgressBar{
+        width:0px;
+        box-shadow: none;
+        background: $goldColor;
+        height: 8px; 
+    }
+    .wizardCircle{
+        position: absolute; 
+        width: 30px; 
+        height: 30px; 
+        display: block; 
+        background: $goldColor; 
+        top: 45px; 
+        left: 50%; 
+        margin-top: -15px; 
+        margin-left: -15px; 
+        border-radius: 50%;
+        &:after{
+            content: ' '; 
+            width: 14px; 
+            height: 14px; 
+            background: $goldDarkColor; 
+            border-radius: 50px; 
+            position: absolute; 
+            top: 8px; 
+            left: 8px;
+        }
+    } 
 }
-
-.wizardStep {
-    padding: 0; 
-    position: relative;
-}
-
-.wizardStepName{
-    color: $goldColor;
-    font-size: 14px; 
-    margin-bottom: 5px;
-}
-
-.wizardCircle{
-    position: absolute; 
-    width: 30px; 
-    height: 30px; 
-    display: block; 
-    background: $goldColor; 
-    top: 45px; 
-    left: 50%; 
-    margin-top: -15px; 
-    margin-left: -15px; 
-    border-radius: 50%;
-} 
-.wizardCircle:after{
-    content: ' '; 
-    width: 14px; 
-    height: 14px; 
-    background: $goldDarkColor; 
-    border-radius: 50px; 
-    position: absolute; 
-    top: 8px; 
-    left: 8px;
-} 
-
-.wizardProgress{
-    position: relative; 
-    border-radius: 0px; 
-    height: 8px; 
-    box-shadow: none; 
-    margin: 20px 0;
-}
-
-.wizardProgressBar{
-    width:0px;
-    box-shadow: none;
-    background: $goldColor;
-    height: 8px; 
-}
-
-.wizardStep.complete > .wizardProgress > .wizardProgressBar {width:100%;}
-.wizardStep.active > .wizardProgress > .wizardProgressBar {width:50%;}
-.wizardStep:first-child.active > .wizardProgress > .wizardProgressBar {width:0%;}
-.wizardStep:last-child.active > .wizardProgress > .wizardProgressBar {width: 100%;}
-.wizardStep.disabled > .wizardCircle {background-color: #f5f5f5;}
-.wizardStep.disabled > .wizardCircle:after {opacity: 0;}
-.wizardStep:first-child > .wizardProgress {left: 50%; width: 50%;}
-.wizardStep:last-child > .wizardProgress {width: 50%;}
 
 // Mail Form
 .form{
     color: $goldColor;
-}
-
-.formHead {
-    color: $goldDarkColor;
-}
-
-.formChecked {
-    color: $goldDarkColor;
-    border: 3px solid $goldDarkColor;
-    border-radius: 0.25rem;
+    .formHead {
+        color: $goldDarkColor;
+    }    
+    .formChecked {
+        color: $goldDarkColor;
+        border: 3px solid $goldDarkColor;
+        border-radius: 0.25rem;
+    }
 }

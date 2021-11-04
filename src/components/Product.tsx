@@ -54,17 +54,17 @@ export class Product extends React.Component<ProductProps,{}> {
             }
         }
       return (
-        <div className={['card cardProduct', 'mx-1', 'my-1'].join(' ')} {...props}>
+        <div className={['card cardProduct', 'mx-1', 'my-1','px-0'].join(' ')} {...props}>
             <img src={ image } className="card-img-top cardImage" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{ title }</h5>
-                <p className="card-text">{ description }</p>
+                <p className="card-text card-prod">{ description }</p>
                 <div className="row">
                     <div className="col-12 col-sm-6">
-                        <p className="card-text">{ time }'</p>                        
+                        <p className="card-text card-prod">{ time }'</p>                        
                     </div>
                     <div className="col-12 col-sm-6">
-                        <p className="card-text float-end">{ price }€</p>  
+                        <p className="card-text card-prod float-end">{ price }€</p>  
                     </div>
                     <div className="col-4">
                         <Button buttonType="card" icon="minus" onClickButton={removeProduct}/>

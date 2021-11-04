@@ -40,17 +40,17 @@ export class Summary extends React.Component<SummaryProps,{}> {
                     <div className="row">
                         {porductList.map((product, i) => (
                             <div className="col-12" key={'prod-'+i+'-div'}>
-                                <p className="card-text float-start" key={'prod-'+i+'-title'}>{product.title}</p>
-                                <p className="card-text float-end" key={'prod-'+i+'-price'}>{product.price * product.quantity}€</p>
+                                <p className="card-text card-summary-title float-start" key={'prod-'+i+'-title'}>{product.title} X{product.quantity}</p>
+                                <p className="card-text card-summary float-end" key={'prod-'+i+'-price'}>{product.price * product.quantity}€</p>
                             </div>
                         ))}
                         {
                             this.props.applyDiscount ? <div className="col-12">
-                                <p className="card-text float-start">Código promocional</p>
-                                <p className="card-text float-end">-{this.props.discount}</p></div> : null
+                                <p className="card-text card-summary float-start">Código promocional</p>
+                                <p className="card-text card-summary float-end">-{this.props.discount}</p></div> : null
                         }
                         <div className="col-12">
-                            <p className="card-text float-end">Total: {totalPrice}€</p>                            
+                            <p className="card-text card-summary float-end">Total: {totalPrice}€</p>                            
                         </div>
                     </div>
                 </div>

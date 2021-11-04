@@ -106,7 +106,6 @@ export class PaymentForm extends React.Component<PaymentFormProps,PaymentFormSta
       .replace(/\/\//g, '/');
       const name = "expirationDate";
       const validation = validations[name];
-      console.log('HERE');
       let valid = validation.date.isValid(element.value);
       console.log(valid);
       if (RegExp(validation.date.value).test(element.value) && !valid) {

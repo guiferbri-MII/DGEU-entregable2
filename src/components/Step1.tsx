@@ -5,6 +5,7 @@ import ProductList from '../components/ProductList';
 import { IProduct } from '../components/Product';
 import { Filters } from './Filters';
 import prod1Image from '../assets/img/prod1.jpeg';
+import prod2Image from '../assets/img/prod2.jpeg';
 
 interface IStep1Props {
     addedProducts: IProduct[];
@@ -45,6 +46,7 @@ const prod3  = {
     time: '120',
     description: 'Masaje de 30 min. que se realiza dentro del agua mientras te entregas a la incomparable sensación de flotar. Libera tensiones físicas y emocionales a través de la interacción con el agua y las milenarias técnicas Shiatsu. Incluye un zumo de frutas o una infusión relajante y recorrido termal.',
     price: 105,
+    image: prod2Image,
     center: 'Barcelona',
     quantity: 0
 };
