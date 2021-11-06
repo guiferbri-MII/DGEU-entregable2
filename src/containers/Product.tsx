@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Product, { ProductProps} from "../components/Product";
+import Product from "../components/Product";
 import IGlobalState from '../state/globalState';
 import { Dispatch } from 'redux';
 import { ProductActions } from '../actions/ProductActions';

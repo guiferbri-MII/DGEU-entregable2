@@ -23,7 +23,7 @@ interface IStep2State{
 
 const prod1 = {
     title: 'Baño Termal Ancient y Masaje Relajante',
-    description: 'Un viaje de sensaciones en un edificio histórico y a la luz de las velas que consiste en un recorrido libre por distintas salas de agua a diferentes temperaturas. Incluye un masaje relajante de 30 min.',
+    description: 'Recorrido libre por distintas salas de agua. Incluye un masaje relajante de 30 min.',
     time: '120',
     price: 84,
     id: 'prod-1',
@@ -35,7 +35,7 @@ const prod2  = {
     id: 'prod-2',
     title: 'Experiencia Baño de Vino',
     time: '180',
-    description: 'Acceso exclusivo durante 30 min. al Baño de Vino con propiedades antioxidantes, donde se aplica un masaje craneofacial y puedes degustar una copa de vino acompañado de nueces y queso. A continuación, un masaje corporal relajante de 45 min. Incluye recorrido termal.',
+    description: 'Baño de Vino con propiedades antioxidantes y masaje craneofacial y corporal.',
     price: 135,
     center: 'Sevilla',
     quantity: 0
@@ -44,7 +44,7 @@ const prod3  = {
     id: 'prod-3',
     title: 'Ritual del Agua',
     time: '120',
-    description: 'Masaje de 30 min. que se realiza dentro del agua mientras te entregas a la incomparable sensación de flotar. Libera tensiones físicas y emocionales a través de la interacción con el agua y las milenarias técnicas Shiatsu. Incluye un zumo de frutas o una infusión relajante y recorrido termal.',
+    description: 'Masaje que se realiza dentro del agua. Incluye recorrido termal.',
     price: 105,
     image: prod2Image,
     center: 'Barcelona',

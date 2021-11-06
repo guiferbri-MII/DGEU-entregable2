@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import Page from "../components/Page";
 import IGlobalState from '../state/globalState';
-import { Dispatch } from 'redux';
 
 const mapStateToProps = (state: IGlobalState) => {
     return ({activeStep: state.activeStep});
