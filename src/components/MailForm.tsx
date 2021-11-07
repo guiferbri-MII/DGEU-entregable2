@@ -39,6 +39,21 @@ export class MailForm extends React.Component<MailFormProps,MailFormState> {
   constructor(props: MailFormProps) {
     super (props);
     this.state = {
+      name: this.props.dataForm.name != '',
+      lastname: this.props.dataForm.lastname != '',
+      phone: this.props.dataForm.phone != '',
+      email: this.props.dataForm.email != '',
+      address: this.props.dataForm.address != '',
+      postalCode: this.props.dataForm.postalCode != '',
+      city: this.props.dataForm.city != '',
+      state: this.props.dataForm.state != '',
+      country: this.props.dataForm.country != '',
+      nameBuyer: this.props.dataForm.nameBuyer != '',
+      lastnameBuyer: this.props.dataForm.lastnameBuyer != '',
+      phoneBuyer: this.props.dataForm.phoneBuyer != '',
+      emailBuyer: this.props.dataForm.emailBuyer != '',
+      termsCheck: this.props.dataForm.termsCheck != '',
+      privacityCheck: this.props.dataForm.privacityCheck != '',
       errors: {},
       dataForm: {
         name: this.props.dataForm.name,
