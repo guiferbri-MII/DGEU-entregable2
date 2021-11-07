@@ -1,3 +1,3 @@
-# Entregable 1
+# Entregable 2
 
-Storybook de AIRE Wizard
+Implementación MVP AIRE Wizard
